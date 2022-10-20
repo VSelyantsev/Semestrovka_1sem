@@ -18,7 +18,8 @@
             </div>
             <div class="fr">
                 <input type="text" name="firstname" placeholder="Enter First Name"
-                       class="textBox" autofocus="on" required>
+                       class="textBox" autofocus="on" required minlength="4"
+                       pattern="^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$">
             </div>
         </div>
 
@@ -29,7 +30,8 @@
             </div>
             <div class="fr">
                 <input type="text" required name="lastname"
-                       placeholder="Enter Last Name" class="textBox">
+                       placeholder="Enter Last Name" class="textBox" minlength="6"
+                       pattern="^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$">
             </div>
         </div>
 
@@ -39,7 +41,8 @@
                 <img src="images/logo/man.jpg" class= "pictures">
             </div>
             <div class="fr">
-                <input type="text" required name="login" placeholder="Enter Login" class="textBox">
+                <input type="text" required name="login" placeholder="Enter Login" class="textBox"
+                    minlength="4">
             </div>
         </div>
 
@@ -49,7 +52,8 @@
                 <img src="images/logo/emaillogo.jpg" class="pictures">
             </div>
             <div class="fr">
-                <input type="email" required name="email" placeholder="Enter Email" class="textBox">
+                <input type="email" required name="email" placeholder="Enter Email" class="textBox"
+                    pattern="/\A[^@]+@([^@\.]+\.)+[^@\.]+\z/">
             </div>
         </div>
 
@@ -59,7 +63,8 @@
                 <img src="images/logo/passwordlogo.jpg" class="pictures">
             </div>
             <div class="fr">
-                <input type="Password" required name="password" placeholder="Enter Password" class="textBox">
+                <input type="Password" required name="password" placeholder="Enter Password" class="textBox"
+                    minlength="6" pattern="(?=.*[0-9])">
             </div>
         </div>
 
@@ -74,7 +79,7 @@
         </div>
 
         <div class="sign-in-container">
-            <p>Alreade have an account? <a href="/login" class="sign-in">Sign in</a></p>
+            <p>Already have an account? <a href="/login" class="sign-in">Sign in</a></p>
         </div>
 
     </form>

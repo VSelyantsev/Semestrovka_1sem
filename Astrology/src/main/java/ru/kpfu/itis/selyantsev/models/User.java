@@ -1,9 +1,8 @@
 package ru.kpfu.itis.selyantsev.models;
 
-import java.util.UUID;
 
 public class User {
-    private UUID id;
+    private Long id;
     private String firstName;
     private String lastName;
     private String login;
@@ -12,7 +11,7 @@ public class User {
     private String gender;
 
     public User(
-            UUID id,
+            Long id,
             String firstName,
             String lastName,
             String login,
@@ -44,11 +43,11 @@ public class User {
         this.gender = gender;
     }
 
-    public UUID getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

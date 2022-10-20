@@ -38,7 +38,7 @@ body {
     color: white;
 }
 
-.fr {
+.fr:valid {
     float: right;
 }
 
@@ -75,7 +75,7 @@ body {
     text-align: center;
 }
 
-.radio {
+.radio:valid {
     color: white;
     background: #2d3e3f;
     line-height: 46px;
