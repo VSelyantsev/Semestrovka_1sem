@@ -9,5 +9,3 @@ create table account (
     email varchar(255) not null,
     gender varchar(255) not null
 )
-
-select * from account where first_name = 'Vladislav';
