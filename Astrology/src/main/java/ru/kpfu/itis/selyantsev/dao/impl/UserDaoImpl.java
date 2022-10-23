@@ -12,7 +12,6 @@ import java.util.Optional;
 import java.util.function.Function;
 
 import static ru.kpfu.itis.selyantsev.util.PostgresConnectionUtil.getConnection;
-import static ru.kpfu.itis.selyantsev.util.PasswordUtil.encrypt;
 
 public class UserDaoImpl implements DAO {
 
@@ -25,10 +24,9 @@ public class UserDaoImpl implements DAO {
 
     private static final String SQL_FIND_BY_ID = "select * from account where id = ?";
 
-    private static final String SQL_FIND_BY_NAME = "select * from account where first_name = ?";
+    private static final String SQL_FIND_BY_LOGIN = "select * from account where login_name = ?";
 
     private static final String SQL_FIND_ALL = "select * from account";
-
     private static final String SQL_UPDATE_BY_ID = "update account set first_name = ?, " +
                                                                     "last_name = ?, " +
                                                                     "login_name = ? ," +
@@ -36,8 +34,7 @@ public class UserDaoImpl implements DAO {
                                                                     "email = ?, " +
                                                                     "gender = ? " +
                                                                     "where id = ?";
-
-    private static final String SQL_DELETE_BY_NAME = "delete from account where first_name = ? ";
+    private static final String SQL_DELETE_BY_LOGIN = "delete from account where login_name = ? ";
 
     private static final String SQL_DELETE_BY_ID = "delete from account where id = ?";
     private static final Function<ResultSet, User> userMapper = row -> {
@@ -63,7 +60,7 @@ public class UserDaoImpl implements DAO {
             preparedStatement.setString(1, entity.getFirstName());
             preparedStatement.setString(2, entity.getLastName());
             preparedStatement.setString(3, entity.getLogin());
-            preparedStatement.setString(4, encrypt(entity.getPassword()));
+            preparedStatement.setString(4, entity.getPassword());
             preparedStatement.setString(5, entity.getEmail());
             preparedStatement.setString(6, entity.getGender());
             preparedStatement.executeUpdate();
@@ -93,14 +90,13 @@ public class UserDaoImpl implements DAO {
     }
 
     @Override
-    public Optional<User> findByName(User entity) {
+    public User findByLoginName(String login) {
         connection = getConnection();
-        try (PreparedStatement preparedStatement = connection.prepareStatement(SQL_FIND_BY_NAME)) {
-            preparedStatement.setString(1, entity.getFirstName());
+        try (PreparedStatement preparedStatement = connection.prepareStatement(SQL_FIND_BY_LOGIN)) {
+            preparedStatement.setString(1, login);
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 if (resultSet.next()) {
-                    User user = userMapper.apply(resultSet);
-                    return Optional.of(user);
+                    return userMapper.apply(resultSet);
                 }
             } catch (SQLException e) {
                 LOGGER.warn("Choice is not correct", e);
@@ -109,9 +105,8 @@ public class UserDaoImpl implements DAO {
             LOGGER.warn("Illegal Argument, choose correct argument!", e);
         }
         LOGGER.warn("User does not exist");
-        return Optional.empty();
+        return null;
     }
-
     @Override
     public List<User> findAll() {
 
@@ -137,7 +132,7 @@ public class UserDaoImpl implements DAO {
             preparedStatement.setString(1, entity.getFirstName());
             preparedStatement.setString(2, entity.getLastName());
             preparedStatement.setString(3, entity.getLogin());
-            preparedStatement.setString(4, encrypt(entity.getPassword()));
+            preparedStatement.setString(4, entity.getPassword());
             preparedStatement.setString(5, entity.getEmail());
             preparedStatement.setString(6, entity.getGender());
             preparedStatement.setLong(7, entity.getId());
@@ -149,7 +144,7 @@ public class UserDaoImpl implements DAO {
     @Override
     public void delete(User entity) {
         connection = getConnection();
-        try (PreparedStatement preparedStatement = connection.prepareStatement(SQL_DELETE_BY_NAME)) {
+        try (PreparedStatement preparedStatement = connection.prepareStatement(SQL_DELETE_BY_LOGIN)) {
             preparedStatement.setString(1, entity.getFirstName());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
