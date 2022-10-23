@@ -7,8 +7,9 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import org.hibernate.validator.constraints.Length;
-import ru.kpfu.itis.selyantsev.dao.impl.UserDaoImpl;
 import ru.kpfu.itis.selyantsev.models.User;
+import ru.kpfu.itis.selyantsev.service.UserService;
+import ru.kpfu.itis.selyantsev.service.impl.UserServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,7 +21,8 @@ public class RegistrationServlet extends HttpServlet {
 
     private static final Logger logger = LoggerFactory.getLogger(RegistrationServlet.class);
 
-    private final UserDaoImpl userDao = new UserDaoImpl();
+
+    private final UserService userService = new UserServiceImpl();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -48,13 +50,13 @@ public class RegistrationServlet extends HttpServlet {
         String email = req.getParameter("email");
 
         @Length(min = 6)
-        @Pattern(regexp = "(?=.*[0-9])")
+        @Pattern(regexp = "(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{6,}")
         String password = req.getParameter("password");
 
         @NotNull(message = "Please, choose your gender!")
         String gender = req.getParameter("gender");
 
-        userDao.save(new User(
+        userService.save(new User (
                 firstName,
                 lastName,
                 login,
@@ -63,6 +65,6 @@ public class RegistrationServlet extends HttpServlet {
                 gender
         ));
 
-        resp.sendRedirect("*.ftl");
+        resp.sendRedirect("login.ftl");
     }
 }

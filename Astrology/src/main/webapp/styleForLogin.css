@@ -1,0 +1,114 @@
+body {
+    background: url("images/backgrounds/bkk.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-family: "Open Sans", sans-serif;
+    color: #333333;
+}
+
+.box-form {
+    margin: 0 auto;
+    width: 55%;
+    border-radius: 17.5%;
+    overflow: hidden;
+}
+
+.box-form div {
+    height: auto;
+}
+
+
+.box-form .down {
+    padding: 40px;
+    overflow: hidden;
+    background-image: linear-gradient(109.6deg, rgb(72, 200, 160) 11.2%, rgb(32, 40, 48) 91.3%);
+}
+
+.box-form .down h5 {
+    font-size: 4vmax;
+    line-height: 0;
+    text-align: center;
+}
+
+.box-form .down .inputs {
+    overflow: hidden;
+}
+
+.box-form .down input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 25px;
+    font-size: 16px;
+    border: none;
+    outline: none;
+}
+
+.down h3 {
+    text-align: center;
+}
+
+.down a {
+    color: gray;
+}
+
+.box-form .down .remember-me {
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.box-form .down .remember-me input {
+    margin: 0;
+    margin-right: 7px;
+    width: auto;
+}
+
+
+label {
+    display: block;
+    position: relative;
+    margin-left: 30px;
+}
+
+label::before {
+    content: ' \f00c';
+    position: absolute;
+    font-family: FontAwesome;
+    background: transparent;
+    border: 3px solid #70F570;
+    color: transparent;
+    left: -30px;
+    transition: all 0.2s linear;
+}
+
+label:hover::before {
+    font-family: FontAwesome;
+    content: ' \f00c';
+    color: #fff;
+    cursor: pointer;
+    background: #70F570;
+}
+
+label input[type="checkbox"] {
+    display: none;
+}
+
+.submit input {
+    background-image: linear-gradient(135deg, #70F570 10%, #49C628 100%);
+    font-size: 16px;
+    border-radius: 40px;
+    display: inline-block;
+    color: #fff;
+    border: 0;
+    outline: 0;
+    box-shadow: 0px 4px 20px 0px #49c628a6;
+}
+
+.submit {
+    float: right;
+    font-size: 16px;
+    padding: 12px 35px;
+    display: inline-block;
+    width: 120px;
+}
