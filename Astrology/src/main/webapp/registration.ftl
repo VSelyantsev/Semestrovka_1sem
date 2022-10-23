@@ -64,7 +64,8 @@
             </div>
             <div class="fr">
                 <input type="Password" required name="password" placeholder="Enter Password" class="textBox"
-                    minlength="6" pattern="(?=.*[0-9])">
+                    minlength="6"
+                       pattern="(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{6,}">
             </div>
         </div>
 
