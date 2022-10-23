@@ -9,7 +9,7 @@ public interface CrudRepository<ID, T> {
 
     Optional<T> findById(ID id);
 
-    Optional<T> findByName(T entity);
+    T findByLoginName(String login);
     List<T> findAll();
     void update(T entity);
 
