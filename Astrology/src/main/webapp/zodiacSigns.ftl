@@ -1,5 +1,5 @@
-<!DOCTYPE html>
 <html>
+<#include "base.ftl">
 <head>
 	<meta charset="utf-8">
 	<title>Zodiac Zigns</title>
