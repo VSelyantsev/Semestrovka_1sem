@@ -36,7 +36,7 @@
 						 </div>
 					 </div>
 				 </div>
-				 <div class="item" style="background-image: url(images/planets/secondSlide.jpg)">
+				 <div class="item" style="background-image: url(images/planets/secondSLide.jpg)">
 					 <div class="carousel-caption">
 						 <div class="hero fadeInUp animated">
 							 <hgroup>
@@ -126,7 +126,7 @@
 		<div class="part">
 			<div class="img-left">
 				<img class="picture-properties" 
-					src="images/Planets/mainContent/mercury.jpg">
+					src="images/planets/mainContent/mercury.jpg">
 			</div>
 			<div class="description-right">
 				<p class="paragraph-properties">Mercury is the smallest planet in the solar system and the closest to the sun. Named after the ancient Roman god of trade, Mercury is fast because it moves through the sky faster than other planets. Its period of revolution around the Sun is only 87.97 Earth days - the shortest among all the planets in the solar system.</p>
@@ -137,7 +137,7 @@
 		<div class="part">
 			<div class="img-left">
 				<img class="picture-properties" 
-					src="images/Planets/mainContent/venera.jpg">
+					src="images/planets/mainContent/venera.jpg">
 			</div>
 			<div class="description-right">
 				<p class="paragraph-properties">Venus is the second farthest from the Sun and the sixth largest planet in the solar system, along with Mercury, Earth and Mars, belonging to the family of terrestrial planets. Named after the ancient Roman goddess of love, Venus. According to a number of characteristics - for example, in mass and size - Venus is considered the "sister" of the Earth.</p>
@@ -148,7 +148,7 @@
 		<div class="part">
 			<div class="img-left">
 				<img class="picture-properties" 
-					src="images/Planets/mainContent/earth.jpg">
+					src="images/planets/mainContent/earth.jpg">
 			</div>
 			<div class="description-right">
 				<p class="paragraph-properties">
@@ -160,7 +160,7 @@
 		<div class="part">
 			<div class="img-left">
 				<img class="picture-properties" 
-					src="images/Planets/mainContent/mars.jpg">
+					src="images/planets/mainContent/mars.jpg">
 			</div>
 			<div class="description-right">
 				<p class="paragraph-properties">
@@ -172,7 +172,7 @@
 		<div class="part">
 			<div class="img-left">
 				<img class="picture-properties" 
-					src="images/Planets/mainContent/jupiter.jpg">
+					src="images/planets/mainContent/jupiter.jpg">
 			</div>
 			<div class="description-right">
 				<p class="paragraph-properties">Jupiter is the largest planet in the solar system, a gas giant. Its equatorial radius is 71.4 thousand km, which is 11.2 times the radius of the Earth. Jupiter is the only planet whose center of mass with the Sun is outside the Sun and is about 7% of the solar radius from it.</p>
@@ -182,7 +182,7 @@
 		<div class="part">
 			<div class="img-left">
 				<img class="picture-properties" 
-					src="images/Planets/mainContent/saturn.jpg">
+					src="images/planets/mainContent/saturn.jpg">
 			</div>
 			<div class="description-right">
 				<p class="paragraph-properties">Saturn belongs to the type of gas planets: it consists mainly of gases and does not have a solid surface. The equatorial radius of the planet is 60,300 km, the polar radius is 54,400 km; Of all the planets in the solar system, Saturn has the most compression.</p>
@@ -193,7 +193,7 @@
 		<div class="part">
 			<div class="img-left">
 				<img class="picture-properties" 
-					src="images/Planets/mainContent/uran.jpg">
+					src="images/planets/mainContent/uran.jpg">
 			</div>
 			<div class="description-right">
 				<p class="paragraph-properties">Uranus is the planet of the solar system, the seventh in distance from the Sun, the third in diameter and the fourth in mass. It was discovered in 1781 by the English astronomer William Herschel and named after the Greek sky god Uranus.</p>
@@ -204,7 +204,7 @@
 		<div class="part">
 			<div class="img-left">
 				<img class="picture-properties" 
-					src="images/Planets/mainContent/neptune.jpg">
+					src="images/planets/mainContent/neptune.jpg">
 			</div>
 			<div class="description-right">
 				<p class="paragraph-properties">Neptune is the eighth and farthest planet from the Sun in the solar system. Its mass exceeds the mass of the Earth by 17.2 times and is the third among the planets of the solar system, and in terms of equatorial diameter, Neptune ranks fourth, surpassing the Earth by 3.9 times. The planet is named after Neptune, the Roman god of the seas.</p>
