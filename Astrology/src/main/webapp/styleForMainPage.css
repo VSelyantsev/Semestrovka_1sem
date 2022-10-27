@@ -1,0 +1,136 @@
+body {
+    background-color: #05041f; 
+    background-image: url("images/backgrounds/bkForMainPage.png");
+    background-size: cover;
+}
+
+.intro-section {
+    padding-top: 80px;
+}
+
+.intro-content {
+    max-width: 900px;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    background: #0d0733;
+    border-radius: 23px;
+    padding: 28px 35px 45px 28px;
+    font-family: serif;
+    color: #fff;
+    position: relative;
+}
+
+.intro-container {
+    border: 1px solid; 
+    color: #ffffff;
+    border-radius: 23px;
+}
+
+.intro-body {
+    display: flex;
+}
+
+.intro-header {
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.intro-section h2 {
+    ont-weight: 300;
+    font-size: 20px;
+    line-height: 27px;
+}
+
+.intro-section h1 {
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 130%;
+}
+
+.intro-section p {
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 27px;
+}
+
+.intro-left {
+    max-width: 450px;
+    width: 43%;
+    margin-right: 20px;
+    margin-left: 10px;
+}
+
+.intro-right {
+    max-width: 450px;
+    width: 57%;
+}
+
+
+.container {
+    margin-top: 100px;
+}
+
+.testimonial {
+    background: #fff;
+    text-align: center;
+    padding: 40px 20%;
+    border-radius: 10%;
+    border: 1px solid;
+    color: #ffffff;
+    background-color: #05041f;
+}
+.testimonial .pic {
+    height: 70px;
+}
+
+
+
+
+.testimonial .description {
+    font-size: 20px;
+    font-style: italic;
+    color: #86868a;
+    line-height: 1.8;
+    margin-top: 10px;
+}
+
+.owl-theme .owl-controls {
+    width: 100%;
+    position: absolute;
+    top: 45px;
+}
+
+.owl-theme .owl-controls .owl-buttons div{
+    font-size: 18px;
+    background: transparent;
+    opacity: 0.5;
+}
+
+.owl-theme .owl-prev{
+    position: relative;
+    left: -45px;
+}
+
+.owl-theme .owl-next{
+    position: relative;
+    right: -45px;
+}
+
+.owl-prev:before,
+.owl-next:before {
+    content: "\f177";
+    font-family: 'FontAwesome';
+    color: #444;
+}
+
+.owl-next:before{
+    content: "\f178";
+}
+@media only screen and (max-width: 480px) {
+    .testimonial{
+        padding: 40px 10%;
+    }
+}
+
