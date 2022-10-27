@@ -17,4 +17,6 @@ public interface UserService {
     User findByLogin(String login);
 
     boolean login(String loginName, String password);
+
+    String search(String pageName);
 }
