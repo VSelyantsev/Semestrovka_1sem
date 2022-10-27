@@ -53,47 +53,21 @@ body {
 }
 
 .box-form .down .remember-me {
-    padding-top: 20px;
+    margin-top: 20px;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.box-form .down .remember-me input {
-    margin: 0;
-    margin-right: 7px;
-    width: auto;
 }
 
-
-label {
-    display: block;
-    position: relative;
-    margin-left: 30px;
+.wrapper-for-buttom {
+    display: flex;
 }
 
-label::before {
-    content: ' \f00c';
-    position: absolute;
-    font-family: FontAwesome;
-    background: transparent;
-    border: 3px solid #70F570;
-    color: transparent;
-    left: -30px;
-    transition: all 0.2s linear;
-}
-
-label:hover::before {
-    font-family: FontAwesome;
-    content: ' \f00c';
-    color: #fff;
-    cursor: pointer;
-    background: #70F570;
+.wrapper-for-buttom label {
+    font-size: 15px;
 }
 
 label input[type="checkbox"] {
     display: none;
 }
-
 .submit input {
     background-image: linear-gradient(135deg, #70F570 10%, #49C628 100%);
     font-size: 16px;
