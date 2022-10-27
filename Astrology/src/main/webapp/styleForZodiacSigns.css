@@ -1,0 +1,177 @@
+body {
+	background: linear-gradient(112.1deg, rgb(32, 38, 57) 11.4%, rgb(63, 76, 119) 70.2%);
+}
+
+.carousel-animate .carousel-indicators > li {
+	margin: 0 2px;
+	background-color: #fff;
+	border-color: rgb(58,36,83);
+	opacity: .7;
+}
+
+.carousel-animate .carousel-indicators > li.active {
+	width: 10px;
+	height: 10px;
+	opacity: 1;
+}
+
+.carousel-animate .hero {
+	color: #fff;
+	text-align: center;
+	text-transform: uppercase;
+	text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.75);
+}
+
+.btn.btn-lg {
+	padding: 10px 40px;
+}
+
+.btn.btn-hero,
+.btn.btn-hero:hover,
+.btn.btn-hero:focus {
+	color: #fff;
+	background-color: #694198;
+	border-color: rgb(67,41,97);
+	outline: none;
+	margin: 20px auto;
+}
+
+@media screen and (max-width: 640px) {
+	.hero h1 {
+		font-size: 2em;
+	}
+}
+
+.carousel-fade .carousel-inner .item {
+	transition-property: opacity;
+}
+
+.carousel-fade .carousel-inner .item,
+.carousel-fade .carousel-inner .active.left,
+.carousel-fade .carousel-inner .active.right {
+	opacity: 0;
+}
+
+.carousel-fade .carousel-inner .active,
+.carousel-fade .carousel-inner .next.left,
+.carousel-fade .carousel-inner .prev.right {
+	opacity: 1;
+}
+
+.carousel-fade .carousel-inner .next,
+.carousel-fade .carousel-inner .prev,
+.carousel-fade .carousel-inner .active.left,
+.carousel-fade .carousel-inner .active.right {
+	left: 0;
+	transform: translate3d(0, 0, 0);
+}
+
+.carousel-bg .carousel-inner .item {
+	background-color: darkslategrey;
+	background-size: cover;
+	background-position: center;
+	min-height: 480px;
+}
+
+.container {
+	margin-top: 50px;
+}
+
+.wrapper-of-list {
+	text-align: center;
+}
+
+.navigation {
+	margin: 20px 350px 10px 350px;
+	font-family: 'Kanit', sans-serif;
+	font-weight: 900;
+	color: #ffffff;
+}
+
+.wrapper-northen {
+	text-align: center;
+	display: flex;
+	margin: 0 350px 0 350px;
+}
+
+
+.buttonForNavigation {
+	width: 100px;
+	height: 40px;
+	background-image: linear-gradient(135deg, #70F570 10%, #49C628 100%);
+  	font-size: 16px;
+  	border-radius: 40px;
+  	display: inline-block;
+  	color: #fff;
+  	border: 0;
+ 	outline: 0;
+ 	box-shadow: 0px 4px 20px 0px #49c628a6;
+ 	margin-right: 5px;
+ 	margin-bottom: 5px;
+ 	font-weight: 600;
+}
+
+
+.wrapper-southern {
+	text-align: center;
+	display: flex;
+	margin: 0 350px 0 350px;
+}
+
+a {
+	text-decoration: none;
+}
+
+.part {
+	margin-top: 70px;
+	max-width: 1263px;
+	width: 100%;
+	display: flex;
+	margin-bottom: 100px;
+}
+
+.img-left {
+	width: 45%;
+	text-align: center;
+}
+
+.picture-properties {
+	height: 200px;
+	width: 200px;
+	border-radius: 50%;
+}
+
+.description-right {
+	margin-right: 50px;
+	width: 100%;
+	border: 3px solid;
+	color: black;
+	border-radius: 20%;
+	background: linear-gradient(109.6deg, rgb(0, 0, 0) 11.2%, rgb(11, 132, 145) 91.1%);
+}
+
+.zodiacName {
+	color: #ffffff;
+	margin-left: 270px;
+	font-family: 'Kanit', sans-serif;
+	font-weight: 900;
+}
+
+.paragraph-properties {
+	padding-top: 30px;
+	text-align: center;
+	font-size: 16px;
+	color: #ffffff;
+	font-family: 'Kanit', sans-serif;
+	font-weight: 600;
+}
+
+
+.wrapper-of-list .wrapper-northen .zodiacNorthern .buttonForNavigation a {
+	text-decoration: none;
+}
+
+
+.wrapper-of-list .wrapper-southern .zodiacSouthern .buttonForNavigation a {
+	text-decoration: none;
+}

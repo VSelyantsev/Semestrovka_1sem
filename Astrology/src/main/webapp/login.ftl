@@ -20,11 +20,13 @@
                        pattern="(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{6,}">
             </div>
 
+
             <div class="remember-me">
-                <label>
-                    <input type="checkbox" name="rememberMe" checked/>
-                    <span class="text-checkbox">Remember me</span>
-                </label>
+                <div class="wrapper-for-buttom">
+                    <label class="controller-label" for="rememberMe">Remember me</label>
+                    <input type="checkbox" name="rememberMe" id="remember-me" class="
+							custom-control-input" />
+                </div>
             </div>
 
             <h3>Don't have an account? <a href="/registration">Creat Your Account</a></h3>
