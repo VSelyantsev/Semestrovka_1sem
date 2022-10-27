@@ -1,23 +1,23 @@
 package ru.kpfu.itis.selyantsev.models;
 
-public class Planets {
+public class Planet {
 
     private Long planetId;
     private String planetName;
     private String planetDetection;
     private String planetDistance;
 
-    public Planets(Long planetId,
-                   String planetName,
-                   String planetDetection,
-                   String planetDistance) {
+    public Planet(Long planetId,
+                  String planetName,
+                  String planetDetection,
+                  String planetDistance) {
         this.planetId = planetId;
         this.planetName = planetName;
         this.planetDetection = planetDetection;
         this.planetDistance = planetDistance;
     }
 
-    public Planets(String planetName, String planetDetection, String planetDistance) {
+    public Planet(String planetName, String planetDetection, String planetDistance) {
         this.planetName = planetName;
         this.planetDetection = planetDetection;
         this.planetDistance = planetDistance;
