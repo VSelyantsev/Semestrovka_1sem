@@ -22,45 +22,46 @@ public class ZodiacSignsImpl implements ZodiacSignsDAO {
 
     private static Connection connection;
 
-    private static final String SQL_INSERT_CONSTELLATION = "insert into " +
-            "constellations(constellation_name, constellation_coordinates, constellation_form" +
+    private static final String SQL_INSERT_ZODIAC = "insert into " +
+            "zodiac_signs(zodiac_name, zodiac_type, zodiac_element" +
             "values(?, ?, ?)";
-    private static final String SQL_FIND_CONSTELLATION_BY_ID = "select * from constellations where id = ?";
+    private static final String SQL_FIND_ZODIAC_BY_ID = "select * from zodiac_signs where id = ?";
 
-    private static final String SQL_FIND_CONSTELLATION_BY_LOGIN_NAME = "select * " +
-            "from constellations where constellation_name = ?";
+    private static final String SQL_FIND_ZODIAC_BY_LOGIN_NAME = "select * " +
+            "from zdoiac_signs where zodiac_name = ?";
 
-    private static final String SQL_FIND_ALL_CONSTELLATIONS = "select * from constellations";
+    private static final String SQL_FIND_ALL_ZODIAC = "select * from zodiac_signs";
 
-    private static final String SQL_UPDATE_CONSTELLATION_BY_ID = "update constellations set" +
-            "constellation_name = ?," +
-            "constellation_coordinates = ?, " +
-            "constellation_form = ? " +
+    private static final String SQL_UPDATE_ZODIAC_BY_ID = "update zodiac_signs set" +
+            "zodiac_name = ?," +
+            "zodiac_type = ?, " +
+            "zodiac_element = ? " +
             "where id = ?";
 
-    private static final String SQL_DELETE_CONSTELLATION_BY_LOGIN = "delete from " +
-            "constellations where constellation_name = ?";
+    private static final String SQL_DELETE_ZODIAC_BY_LOGIN = "delete from " +
+            "zodiac_signs where zodiac_name = ?";
 
-    private static final String SQL_DELETE_CONSTELLATION_BY_ID = "delete from " +
-            "constellations where id = ?";
+    private static final String SQL_DELETE_ZODIAC_BY_ID = "delete from " +
+            "zodiac_signs where id = ?";
 
-    private static final Function<ResultSet, Constellation> constellationMapper = row -> {
+    private static final Function<ResultSet, ZodiacSigns> zodiacSignsMapper = row -> {
       try {
-          String constellationName = row.getString("constellation_name");
-          String constellationCoordinates = row.getString("constellation_coordinates");
-          String constellationForm = row.getString("constellation_form");
-          return new Constellation(constellationName, constellationCoordinates, constellationForm);
+          String zodiacName = row.getString("zodiac_name");
+          String zodiacType = row.getString("zodiac_type");
+          String zodiacElement = row.getString("zodiac_element");
+          return new ZodiacSigns(zodiacName, zodiacType, zodiacElement);
       } catch (SQLException e) {
           throw new RuntimeException(e);
       }
     };
+
     @Override
-    public void save(Constellation entity) {
+    public void save(ZodiacSigns entity) {
         connection = getConnection();
-        try (PreparedStatement preparedStatement = connection.prepareStatement(SQL_INSERT_CONSTELLATION)) {
-            preparedStatement.setString(1, entity.getConstellationName());
-            preparedStatement.setString(2, entity.getConstellationCoordinates());
-            preparedStatement.setString(3, entity.getConstellationForm());
+        try (PreparedStatement preparedStatement = connection.prepareStatement(SQL_INSERT_ZODIAC)) {
+            preparedStatement.setString(1, entity.getZodiacName());
+            preparedStatement.setString(2, entity.getZodiacType());
+            preparedStatement.setString(3, entity.getZodiacType());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             LOGGER.warn("Save failed! ", e);
@@ -68,14 +69,14 @@ public class ZodiacSignsImpl implements ZodiacSignsDAO {
     }
 
     @Override
-    public Optional<Constellation> findById(Long id) {
+    public Optional<ZodiacSigns> findById(Long id) {
         connection = getConnection();
-        try (PreparedStatement preparedStatement = connection.prepareStatement(SQL_FIND_CONSTELLATION_BY_ID)) {
+        try (PreparedStatement preparedStatement = connection.prepareStatement(SQL_FIND_ZODIAC_BY_ID)) {
             preparedStatement.setLong(1, id);
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 if (resultSet.next()) {
-                    Constellation constellation = constellationMapper.apply(resultSet);
-                    return Optional.of(constellation);
+                    ZodiacSigns zodiacSigns = zodiacSignsMapper.apply(resultSet);
+                    return Optional.of(zodiacSigns);
                 } else {
                     LOGGER.warn("Constellation does not exist");
                     return Optional.empty();
@@ -87,12 +88,12 @@ public class ZodiacSignsImpl implements ZodiacSignsDAO {
     }
 
     @Override
-    public Constellation findByLoginName(String constellationName) {
+    public ZodiacSigns findByLoginName(String zodiacName) {
         connection = getConnection();
-        try (PreparedStatement preparedStatement = connection.prepareStatement(SQL_FIND_CONSTELLATION_BY_LOGIN_NAME)) {
-            preparedStatement.setString(1, constellationName);
+        try (PreparedStatement preparedStatement = connection.prepareStatement(SQL_FIND_ZODIAC_BY_LOGIN_NAME)) {
+            preparedStatement.setString(1, zodiacName);
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
-                if (resultSet.next()) return constellationMapper.apply(resultSet);
+                if (resultSet.next()) return zodiacSignsMapper.apply(resultSet);
             } catch (SQLException e) {
                 LOGGER.warn("Choise is not correct ", e);
             }
@@ -104,29 +105,29 @@ public class ZodiacSignsImpl implements ZodiacSignsDAO {
     }
 
     @Override
-    public List<Constellation> findAll() {
+    public List<ZodiacSigns> findAll() {
         connection = getConnection();
-        List<Constellation> resultConstellationList = new ArrayList<>();
-        try (PreparedStatement preparedStatement = connection.prepareStatement(SQL_FIND_ALL_CONSTELLATIONS)) {
+        List<ZodiacSigns> resultZodiacList = new ArrayList<>();
+        try (PreparedStatement preparedStatement = connection.prepareStatement(SQL_FIND_ALL_ZODIAC)) {
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 while (resultSet.next())  {
-                    resultConstellationList.add(constellationMapper.apply(resultSet));
+                    resultZodiacList.add(zodiacSignsMapper.apply(resultSet));
                 }
             }
         } catch (SQLException e) {
             LOGGER.warn("Table does not exist ", e);
         }
-        return resultConstellationList;
+        return resultZodiacList;
     }
 
     @Override
-    public void update(Constellation entity) {
+    public void update(ZodiacSigns entity) {
         connection = getConnection();
-        try (PreparedStatement preparedStatement = connection.prepareStatement(SQL_UPDATE_CONSTELLATION_BY_ID)) {
-            preparedStatement.setString(1, entity.getConstellationName());
-            preparedStatement.setString(2, entity.getConstellationCoordinates());
-            preparedStatement.setString(3, entity.getConstellationForm());
-            preparedStatement.setLong(4, entity.getConstellationId());
+        try (PreparedStatement preparedStatement = connection.prepareStatement(SQL_UPDATE_ZODIAC_BY_ID)) {
+            preparedStatement.setString(1, entity.getZodiacName());
+            preparedStatement.setString(2, entity.getZodiacType());
+            preparedStatement.setString(3, entity.getZodiacElement());
+            preparedStatement.setLong(4, entity.getZodiacId());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             LOGGER.warn("Planet does not exist");
@@ -134,10 +135,10 @@ public class ZodiacSignsImpl implements ZodiacSignsDAO {
     }
 
     @Override
-    public void delete(Constellation entity) {
+    public void delete(ZodiacSigns entity) {
         connection = getConnection();
-        try (PreparedStatement preparedStatement = connection.prepareStatement(SQL_DELETE_CONSTELLATION_BY_LOGIN)) {
-            preparedStatement.setString(1, entity.getConstellationName());
+        try (PreparedStatement preparedStatement = connection.prepareStatement(SQL_DELETE_ZODIAC_BY_LOGIN)) {
+            preparedStatement.setString(1, entity.getZodiacName());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             LOGGER.warn("Constellation does not exist");
@@ -147,7 +148,7 @@ public class ZodiacSignsImpl implements ZodiacSignsDAO {
     @Override
     public void deleteById(Long id) {
         connection = getConnection();
-        try (PreparedStatement preparedStatement = connection.prepareStatement(SQL_DELETE_CONSTELLATION_BY_ID)) {
+        try (PreparedStatement preparedStatement = connection.prepareStatement(SQL_DELETE_ZODIAC_BY_ID)) {
             preparedStatement.setLong(1, id);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
