@@ -15,7 +15,7 @@
 </head>
 <body>
 
-
+<#macro content>
 	<div class="container">
 		 <div class="row">
 		 <div id="carousel-example-generic" class="carousel slide carousel-fade carousel-animate carousel-bg" data-ride="carousel">
@@ -211,6 +211,6 @@
 			</div>
 		</div>
 	</div>
-
+</#macro>
 </body>
 </html>

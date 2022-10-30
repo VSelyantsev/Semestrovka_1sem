@@ -33,6 +33,7 @@
     <link rel="stylesheet" type="text/css" href="styleForMainPage.css">
 </head>
 <body>
+<#macro content>
   <div class="intro-section">
     <div class="intro-content">
       <div class="intro-container">
@@ -84,7 +85,7 @@
       </div>
   </div>
 
-
+</#macro>
 </body>
 </html>
 
