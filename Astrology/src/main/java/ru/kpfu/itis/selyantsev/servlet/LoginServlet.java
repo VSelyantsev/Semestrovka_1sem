@@ -35,7 +35,7 @@ public class LoginServlet extends HttpServlet {
             HttpSession httpSession = req.getSession();
             httpSession.setAttribute("login", login);
             httpSession.setMaxInactiveInterval(60 * 60);
-            if (rememberMe != null) {
+            if (rememberMe.equals("on")) {
                 Cookie httpCookie = new Cookie("login", login);
                 httpCookie.setMaxAge(24 * 60 * 60);
                 resp.addCookie(httpCookie);
