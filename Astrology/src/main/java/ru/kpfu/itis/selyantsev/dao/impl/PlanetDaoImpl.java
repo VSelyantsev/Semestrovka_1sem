@@ -34,11 +34,11 @@ public class PlanetDaoImpl implements PlanetDAO {
 
     private static final String SQL_FIND_ALL = "select * from planets";
 
-    private static final String SQL_UPDATE_BY_ID = "update planets set " +
+    private static final String SQL_UPDATE_BY_LOGIN_NAME = "update planets set " +
             "planet_name = ?," +
             "planet_detection = ?," +
             "planet_distance = ?" +
-            "where id = ?";
+            "where planet_name like ?";
 
     private static final String SQL_DELETE_BY_LOGIN = "delete from planet where planet_name = ?";
 
@@ -124,11 +124,11 @@ public class PlanetDaoImpl implements PlanetDAO {
     @Override
     public void update(Planet entity) {
         connection = getConnection();
-        try (PreparedStatement preparedStatement = connection.prepareStatement(SQL_UPDATE_BY_ID)) {
+        try (PreparedStatement preparedStatement = connection.prepareStatement(SQL_UPDATE_BY_LOGIN_NAME)) {
             preparedStatement.setString(1, entity.getPlanetName());
             preparedStatement.setString(2, entity.getPlanetDetection());
             preparedStatement.setString(3, entity.getPlanetDistance());
-            preparedStatement.setLong(4, entity.getPlanetId());
+            preparedStatement.setString(4, entity.getPlanetName());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             LOGGER.warn("Planet does not exist", e);

@@ -20,8 +20,8 @@ public class ArticleDaoImpl implements ArticleDAO {
     private static Connection connection;
 
     private static final String SQL_SAVE_ARTICLE = "insert into " +
-            "articles(article_name, article_date, name_author" +
-            "values(?, ?, ?)";
+            "articles(article_name, article_date" +
+            "values(?, ?)";
 
     private static final String SQL_FIND_ARTICLE_BY_ID = "select * from articles" +
             "where id = ?";
@@ -31,11 +31,10 @@ public class ArticleDaoImpl implements ArticleDAO {
 
     private static final String SQL_FIND_ALL_ARTICLES = "select * from articles";
 
-    private static final String SQL_UPDATE_ARTICLE_BY_ID = "update articles set" +
+    private static final String SQL_UPDATE_ARTICLE_BY_LOGIN_NAME = "update articles set" +
             "article_name = ?," +
             "article_date = ?," +
-            "name_author = ?" +
-            "where id = ?";
+            "where name_author = ?";
 
     private static final String SQL_DELETE_BY_ID = "delete from articles " +
             "where id = ?";
@@ -58,7 +57,6 @@ public class ArticleDaoImpl implements ArticleDAO {
         try (PreparedStatement preparedStatement = connection.prepareStatement(SQL_SAVE_ARTICLE)) {
             preparedStatement.setString(1, entity.getArticleName());
             preparedStatement.setDate(2, (Date) entity.getArticleDate());
-            preparedStatement.setString(3, entity.getUserLoginName());
         } catch (SQLException e) {
             LOGGER.warn("Save failed! ", e);
         }
@@ -119,11 +117,10 @@ public class ArticleDaoImpl implements ArticleDAO {
     @Override
     public void update(Article entity) {
         connection = getConnection();
-        try (PreparedStatement preparedStatement = connection.prepareStatement(SQL_UPDATE_ARTICLE_BY_ID)) {
+        try (PreparedStatement preparedStatement = connection.prepareStatement(SQL_UPDATE_ARTICLE_BY_LOGIN_NAME)) {
             preparedStatement.setString(1, entity.getArticleName());
             preparedStatement.setDate(2, (Date) entity.getArticleDate());
             preparedStatement.setString(3, entity.getUserLoginName());
-            preparedStatement.setLong(4, entity.getArticleId());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             LOGGER.warn("Article does not exist ", e);
@@ -133,7 +130,7 @@ public class ArticleDaoImpl implements ArticleDAO {
     @Override
     public void delete(Article entity) {
         connection = getConnection();
-        try (PreparedStatement preparedStatement = connection.prepareStatement(SQL_FIND_ARTICLE_BY_LOGIN_NAME)) {
+        try (PreparedStatement preparedStatement = connection.prepareStatement(SQL_DELETE_BY_LOGIN_NAME)) {
             preparedStatement.setString(1, entity.getArticleName());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {

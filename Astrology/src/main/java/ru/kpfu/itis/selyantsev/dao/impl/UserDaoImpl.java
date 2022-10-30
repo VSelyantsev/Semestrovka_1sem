@@ -3,6 +3,7 @@ package ru.kpfu.itis.selyantsev.dao.impl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ru.kpfu.itis.selyantsev.dao.DAO;
+import ru.kpfu.itis.selyantsev.dto.UserDTO;
 import ru.kpfu.itis.selyantsev.models.User;
 
 import java.util.ArrayList;
@@ -24,17 +25,17 @@ public class UserDaoImpl implements DAO {
 
     private static final String SQL_FIND_BY_ID = "select * from account where id = ?";
 
-    private static final String SQL_FIND_BY_LOGIN = "select * from account where login_name = ?";
+    private static final String SQL_FIND_BY_LOGIN = "select * from account where login_name like ?";
 
     private static final String SQL_FIND_ALL = "select * from account";
-    private static final String SQL_UPDATE_BY_ID = "update account set first_name = ?, " +
+    private static final String SQL_UPDATE_BY_LOGIN_NAME = "update account set first_name = ?, " +
                                                                     "last_name = ?, " +
                                                                     "login_name = ? ," +
                                                                     "password_account = ?, " +
                                                                     "email = ?, " +
                                                                     "gender = ? " +
-                                                                    "where id = ?";
-    private static final String SQL_DELETE_BY_LOGIN = "delete from account where login_name = ? ";
+                                                                    "where login_name like ?";
+    private static final String SQL_DELETE_BY_LOGIN = "delete from account where login_name like ?";
 
     private static final String SQL_DELETE_BY_ID = "delete from account where id = ?";
     private static final Function<ResultSet, User> userMapper = row -> {
@@ -97,15 +98,12 @@ public class UserDaoImpl implements DAO {
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 if (resultSet.next()) {
                     return userMapper.apply(resultSet);
-                }
-            } catch (SQLException e) {
-                LOGGER.warn("Choice is not correct", e);
+                } else return null;
             }
         } catch (SQLException e) {
             LOGGER.warn("Illegal Argument, choose correct argument!", e);
+            return null;
         }
-        LOGGER.warn("User does not exist");
-        return null;
     }
     @Override
     public List<User> findAll() {
@@ -128,14 +126,14 @@ public class UserDaoImpl implements DAO {
     @Override
     public void update(User entity) {
         connection = getConnection();
-        try (PreparedStatement preparedStatement = connection.prepareStatement(SQL_UPDATE_BY_ID)) {
+        try (PreparedStatement preparedStatement = connection.prepareStatement(SQL_UPDATE_BY_LOGIN_NAME)) {
             preparedStatement.setString(1, entity.getFirstName());
             preparedStatement.setString(2, entity.getLastName());
             preparedStatement.setString(3, entity.getLogin());
             preparedStatement.setString(4, entity.getPassword());
             preparedStatement.setString(5, entity.getEmail());
             preparedStatement.setString(6, entity.getGender());
-            preparedStatement.setLong(7, entity.getId());
+            preparedStatement.setString(7, entity.getLogin());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             LOGGER.warn("Update is not possible", e);
@@ -162,4 +160,5 @@ public class UserDaoImpl implements DAO {
             LOGGER.warn("Can't delete. Choose another id!");
         }
     }
+
 }

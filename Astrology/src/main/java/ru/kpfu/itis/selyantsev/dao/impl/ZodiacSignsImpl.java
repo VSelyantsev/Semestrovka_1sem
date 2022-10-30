@@ -32,11 +32,11 @@ public class ZodiacSignsImpl implements ZodiacSignsDAO {
 
     private static final String SQL_FIND_ALL_ZODIAC = "select * from zodiac_signs";
 
-    private static final String SQL_UPDATE_ZODIAC_BY_ID = "update zodiac_signs set" +
+    private static final String SQL_UPDATE_ZODIAC_BY_LOGIN_NAME = "update zodiac_signs set" +
             "zodiac_name = ?," +
             "zodiac_type = ?, " +
             "zodiac_element = ? " +
-            "where id = ?";
+            "where zodiac_name = ?";
 
     private static final String SQL_DELETE_ZODIAC_BY_LOGIN = "delete from " +
             "zodiac_signs where zodiac_name = ?";
@@ -123,11 +123,11 @@ public class ZodiacSignsImpl implements ZodiacSignsDAO {
     @Override
     public void update(ZodiacSigns entity) {
         connection = getConnection();
-        try (PreparedStatement preparedStatement = connection.prepareStatement(SQL_UPDATE_ZODIAC_BY_ID)) {
+        try (PreparedStatement preparedStatement = connection.prepareStatement(SQL_UPDATE_ZODIAC_BY_LOGIN_NAME)) {
             preparedStatement.setString(1, entity.getZodiacName());
             preparedStatement.setString(2, entity.getZodiacType());
             preparedStatement.setString(3, entity.getZodiacElement());
-            preparedStatement.setLong(4, entity.getZodiacId());
+            preparedStatement.setString(4, entity.getZodiacName());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             LOGGER.warn("Planet does not exist");
