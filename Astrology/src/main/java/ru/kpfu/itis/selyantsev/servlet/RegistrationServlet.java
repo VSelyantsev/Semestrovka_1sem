@@ -1,7 +1,5 @@
 package ru.kpfu.itis.selyantsev.servlet;
 
-import com.sun.org.slf4j.internal.Logger;
-import com.sun.org.slf4j.internal.LoggerFactory;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
@@ -18,8 +16,6 @@ import java.io.IOException;
 
 @WebServlet(name = "registration", urlPatterns = "/registration")
 public class RegistrationServlet extends HttpServlet {
-
-    private static final Logger logger = LoggerFactory.getLogger(RegistrationServlet.class);
 
 
     private final UserService userService = new UserServiceImpl();
