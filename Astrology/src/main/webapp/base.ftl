@@ -41,53 +41,60 @@
             margin-left: 30px;
         }
     </style>
+
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <picture>
+                <img  class="eyeLogo" src="images/mainLogo/Logo.png">
+            </picture>
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Home</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/Astrology_war_exploded/zodiacs">Zodiac Signs</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="/Astrology_war_exploded/planets">Planets</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="">Articles</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link active dropdown-toggle" href="/profile" id="navbarDropdown" role="button"
+                               data-bs-toggle="dropdown" aria-expanded="false">
+                                Menu
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="/Astrology_war_exploded/profile">Profile</a></li>
+                                <li><a class="dropdown-item" href="/Astrology_war_exploded/articles">My articles</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="/Astrology_war_exploded/login">Logout</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <form method="post" action="mainPage" class="d-flex">
+                        <input class="form-control me-2" name="request" type="search" placeholder="Enter something" aria-label="Search">
+                        <button class="buttonFroSearch" type="submit">Search</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+    </header>
 </head>
 
 <body>
 
-<header>
-    <nav class="navbar navbar-expand-lg navbar-light">
-        <picture>
-            <img  class="eyeLogo" src="images/mainLogo/Logo.png">
-        </picture>
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">Home</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Zodiac Signs</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#">Articles</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="">About</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                           data-bs-toggle="dropdown" aria-expanded="false">
-                            Profile
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Edit Profile</a></li>
-                            <li><a class="dropdown-item" href="#">My articles</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="/login">Logout</a></li>
-                        </ul>
-                    </li>
-                </ul>
-                <form method="post" action="mainPage" class="d-flex">
-                    <input class="form-control me-2" name="request" type="search" placeholder="Enter something" aria-label="Search">
-                    <button class="buttonFroSearch" type="submit">Search</button>
-                </form>
-            </div>
-        </div>
-    </nav>
-</header>
+
+<div class="content1">
+    <div class="content"><@content></@content></div>
+</div>
+
+
 </body>
 </html>
