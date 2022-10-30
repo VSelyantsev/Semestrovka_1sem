@@ -1,10 +1,13 @@
 package ru.kpfu.itis.selyantsev.service.impl;
 
 import ru.kpfu.itis.selyantsev.dao.PlanetDAO;
+import ru.kpfu.itis.selyantsev.dao.ProfileDAO;
 import ru.kpfu.itis.selyantsev.dao.ZodiacSignsDAO;
 import ru.kpfu.itis.selyantsev.dao.impl.PlanetDaoImpl;
+import ru.kpfu.itis.selyantsev.dao.impl.ProfileDAOImpl;
 import ru.kpfu.itis.selyantsev.dao.impl.ZodiacSignsImpl;
 import ru.kpfu.itis.selyantsev.models.Planet;
+import ru.kpfu.itis.selyantsev.models.Profile;
 import ru.kpfu.itis.selyantsev.models.User;
 import ru.kpfu.itis.selyantsev.models.ZodiacSigns;
 import ru.kpfu.itis.selyantsev.util.PasswordUtil;
@@ -23,6 +26,8 @@ public class UserServiceImpl implements UserService {
 
     private final ZodiacSignsDAO zodiacSignsDAO = new ZodiacSignsImpl();
 
+    private final ProfileDAO profileDAO = new ProfileDAOImpl();
+
     private final DAO userDao = new UserDaoImpl();
 
 
@@ -36,20 +41,21 @@ public class UserServiceImpl implements UserService {
     public List<UserDTO> findAll() {
         return userDao.findAll().stream()
                 .map(
-                        user -> new UserDTO(user.getFirstName(), user.getLastName(), user.getLogin())
+                        user -> new UserDTO(user.getFirstName(), user.getLastName(), user.getLogin(), user.getEmail())
                 ).collect(Collectors.toList());
     }
 
     @Override
     public Optional<UserDTO> findById(Long id) {
         return userDao.findById(id).map(
-                user -> new UserDTO(user.getFirstName(), user.getLastName(), user.getLogin())
+                user -> new UserDTO(user.getFirstName(), user.getLastName(), user.getLogin(), user.getEmail())
         );
     }
 
     @Override
-    public User findByLogin(String login) {
-        return userDao.findByLoginName(login);
+    public UserDTO findByLogin(String login) {
+        User u = userDao.findByLoginName(login);
+        return new UserDTO(u.getFirstName(), u.getLastName(), u.getLogin(), u.getEmail());
     }
 
     @Override
@@ -82,5 +88,20 @@ public class UserServiceImpl implements UserService {
 
         return requestCondition;
     }
+
+    @Override
+    public Profile createNullProfile(String loginName) {
+        User user = userDao.findByLoginName(loginName);
+        String accountLoginName = user.getLogin();
+        Profile profile = new Profile(
+                "null",
+                "null",
+                "null",
+                accountLoginName
+        );
+        profileDAO.save(profile);
+        return profile;
+    }
+
 
 }

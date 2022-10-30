@@ -1,6 +1,7 @@
 package ru.kpfu.itis.selyantsev.service;
 
 import ru.kpfu.itis.selyantsev.dto.UserDTO;
+import ru.kpfu.itis.selyantsev.models.Profile;
 import ru.kpfu.itis.selyantsev.models.User;
 
 import java.util.List;
@@ -14,9 +15,11 @@ public interface UserService {
 
     Optional<UserDTO> findById(Long id);
 
-    User findByLogin(String login);
+    UserDTO findByLogin(String login);
 
     boolean login(String loginName, String password);
 
     String search(String pageName);
+
+    Profile createNullProfile(String loginName);
 }
