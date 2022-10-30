@@ -2,6 +2,7 @@ drop table if exists account;
 drop table if exists zodiac_signs;
 drop table if exists planets;
 drop table if exists articles;
+drop table if exists profile;
 
 create table account (
     id serial primary key,
@@ -32,4 +33,13 @@ create table articles (
     article_name varchar(20) not null,
     article_date date not null,
     name_author varchar(255) references account(login_name)
+);
+
+create table profile (
+    id serial primary key,
+    photo varchar(200),
+    profile_role varchar(20),
+    hobby varchar(50),
+    account_login_name varchar(20) not null,
+    foreign key (account_login_name) references account(login_name)
 );
