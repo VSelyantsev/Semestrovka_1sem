@@ -118,23 +118,23 @@ public class ProfileDAOImpl implements ProfileDAO {
     }
 
     @Override
-    public void update(Profile entity) {
+    public void update(Profile entity, String loginName) {
         connection = getConnection();
         try (PreparedStatement preparedStatement = connection.prepareStatement(SQL_UPDATE_BY_LOGIN_NAME)) {
             preparedStatement.setString(1, entity.getProfilePhotoUrl());
             preparedStatement.setString(2, entity.getProfileRole());
             preparedStatement.setString(3, entity.getProfileHobby());
-            preparedStatement.setString(4, entity.getAccountLoginName());
+            preparedStatement.setString(4, loginName);
         } catch (SQLException e) {
             LOGGER.warn("Update is not possible! ", e);
         }
     }
 
     @Override
-    public void delete(Profile entity) {
+    public void delete(String loginName) {
         connection = getConnection();
         try (PreparedStatement preparedStatement = connection.prepareStatement(SQL_DELETE_BY_LOGIN_NAME)) {
-            preparedStatement.setString(1, entity.getAccountLoginName());
+            preparedStatement.setString(1, loginName);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             LOGGER.warn("Can't delete. Choose another name! ", e);

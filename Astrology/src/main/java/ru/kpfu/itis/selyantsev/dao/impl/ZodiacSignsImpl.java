@@ -121,13 +121,13 @@ public class ZodiacSignsImpl implements ZodiacSignsDAO {
     }
 
     @Override
-    public void update(ZodiacSigns entity) {
+    public void update(ZodiacSigns entity, String loginName) {
         connection = getConnection();
         try (PreparedStatement preparedStatement = connection.prepareStatement(SQL_UPDATE_ZODIAC_BY_LOGIN_NAME)) {
             preparedStatement.setString(1, entity.getZodiacName());
             preparedStatement.setString(2, entity.getZodiacType());
             preparedStatement.setString(3, entity.getZodiacElement());
-            preparedStatement.setString(4, entity.getZodiacName());
+            preparedStatement.setString(4, loginName);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             LOGGER.warn("Planet does not exist");
@@ -135,10 +135,10 @@ public class ZodiacSignsImpl implements ZodiacSignsDAO {
     }
 
     @Override
-    public void delete(ZodiacSigns entity) {
+    public void delete(String loginName) {
         connection = getConnection();
         try (PreparedStatement preparedStatement = connection.prepareStatement(SQL_DELETE_ZODIAC_BY_LOGIN)) {
-            preparedStatement.setString(1, entity.getZodiacName());
+            preparedStatement.setString(1, loginName);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             LOGGER.warn("Constellation does not exist");

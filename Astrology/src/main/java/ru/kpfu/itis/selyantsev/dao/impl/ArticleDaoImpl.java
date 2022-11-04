@@ -115,12 +115,12 @@ public class ArticleDaoImpl implements ArticleDAO {
     }
 
     @Override
-    public void update(Article entity) {
+    public void update(Article entity, String loginName) {
         connection = getConnection();
         try (PreparedStatement preparedStatement = connection.prepareStatement(SQL_UPDATE_ARTICLE_BY_LOGIN_NAME)) {
             preparedStatement.setString(1, entity.getArticleName());
             preparedStatement.setDate(2, (Date) entity.getArticleDate());
-            preparedStatement.setString(3, entity.getUserLoginName());
+            preparedStatement.setString(3, loginName);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             LOGGER.warn("Article does not exist ", e);
@@ -128,10 +128,10 @@ public class ArticleDaoImpl implements ArticleDAO {
     }
 
     @Override
-    public void delete(Article entity) {
+    public void delete(String loginName) {
         connection = getConnection();
         try (PreparedStatement preparedStatement = connection.prepareStatement(SQL_DELETE_BY_LOGIN_NAME)) {
-            preparedStatement.setString(1, entity.getArticleName());
+            preparedStatement.setString(1, loginName);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             LOGGER.warn("Article does not exist");

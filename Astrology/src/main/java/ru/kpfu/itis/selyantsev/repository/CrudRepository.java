@@ -11,9 +11,9 @@ public interface CrudRepository<ID, T> {
 
     T findByLoginName(String login);
     List<T> findAll();
-    void update(T entity);
+    void update(T entity, String loginName);
 
-    void delete(T entity);
+    void delete(String loginName);
 
     void deleteById(ID id);
 }

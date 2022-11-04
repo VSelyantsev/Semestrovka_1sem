@@ -122,13 +122,13 @@ public class PlanetDaoImpl implements PlanetDAO {
     }
 
     @Override
-    public void update(Planet entity) {
+    public void update(Planet entity, String loginName) {
         connection = getConnection();
         try (PreparedStatement preparedStatement = connection.prepareStatement(SQL_UPDATE_BY_LOGIN_NAME)) {
             preparedStatement.setString(1, entity.getPlanetName());
             preparedStatement.setString(2, entity.getPlanetDetection());
             preparedStatement.setString(3, entity.getPlanetDistance());
-            preparedStatement.setString(4, entity.getPlanetName());
+            preparedStatement.setString(4, loginName);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             LOGGER.warn("Planet does not exist", e);
@@ -136,10 +136,10 @@ public class PlanetDaoImpl implements PlanetDAO {
     }
 
     @Override
-    public void delete(Planet entity) {
+    public void delete(String loginName) {
         connection = getConnection();
         try (PreparedStatement preparedStatement = connection.prepareStatement(SQL_DELETE_BY_LOGIN)) {
-            preparedStatement.setString(1, entity.getPlanetName());
+            preparedStatement.setString(1, loginName);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             LOGGER.warn("Planet does not exist ", e);

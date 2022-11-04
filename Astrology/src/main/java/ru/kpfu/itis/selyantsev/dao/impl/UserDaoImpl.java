@@ -124,7 +124,7 @@ public class UserDaoImpl implements DAO {
     }
 
     @Override
-    public void update(User entity) {
+    public void update(User entity, String loginName) {
         connection = getConnection();
         try (PreparedStatement preparedStatement = connection.prepareStatement(SQL_UPDATE_BY_LOGIN_NAME)) {
             preparedStatement.setString(1, entity.getFirstName());
@@ -133,17 +133,17 @@ public class UserDaoImpl implements DAO {
             preparedStatement.setString(4, entity.getPassword());
             preparedStatement.setString(5, entity.getEmail());
             preparedStatement.setString(6, entity.getGender());
-            preparedStatement.setString(7, entity.getLogin());
+            preparedStatement.setString(7, loginName);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             LOGGER.warn("Update is not possible", e);
         }
     }
     @Override
-    public void delete(User entity) {
+    public void delete(String loginName) {
         connection = getConnection();
         try (PreparedStatement preparedStatement = connection.prepareStatement(SQL_DELETE_BY_LOGIN)) {
-            preparedStatement.setString(1, entity.getFirstName());
+            preparedStatement.setString(1, loginName);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             LOGGER.warn("Can't delete. Choose another name!", e);
