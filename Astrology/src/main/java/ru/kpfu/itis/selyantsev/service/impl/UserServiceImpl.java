@@ -53,9 +53,15 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDTO findByLogin(String login) {
-        User u = userDao.findByLoginName(login);
-        return new UserDTO(u.getFirstName(), u.getLastName(), u.getLogin(), u.getEmail());
+    public User findByLogin(String login) {
+        User user = userDao.findByLoginName(login);
+        return user;
+    }
+
+    @Override
+    public void update(User entity, String loginName) {
+        entity.setPassword(PasswordUtil.encrypt(entity.getPassword()));
+        userDao.update(entity, loginName);
     }
 
     @Override
@@ -88,20 +94,4 @@ public class UserServiceImpl implements UserService {
 
         return requestCondition;
     }
-
-    @Override
-    public Profile createNullProfile(String loginName) {
-        User user = userDao.findByLoginName(loginName);
-        String accountLoginName = user.getLogin();
-        Profile profile = new Profile(
-                "null",
-                "null",
-                "null",
-                accountLoginName
-        );
-        profileDAO.save(profile);
-        return profile;
-    }
-
-
 }
