@@ -1,0 +1,129 @@
+* {
+	margin: 0;
+	padding: 0;	
+}
+
+body {
+	background-image: url("bkk.jpg");
+	background-size: cover;
+}
+
+.wrapper {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	width: 675px;
+	height: 300px;
+	box-shadow: 0 1px 20px 0 rgba(69,90,100,.08);
+	text-align: center;
+}	
+
+.wrapper-left {
+  background: linear-gradient(to right,#01a9ac,#01dbdf);
+  padding: 30px 25px;
+  text-align: center;
+  color: #fff;
+  border-radius: 40px;
+  width: 600px;
+}
+
+.wrapper-left .personalData > summary {
+	cursor: pointer;
+	list-style: none;
+	border: none;
+}
+
+.wrapper-left .personalData .box {
+	display: flex;
+	width: 600px;
+}
+
+.wrapper-left .personalData .box .labelData {
+	width: 150px;
+	float: left;
+	margin-left: 150px;
+}
+
+.wrapper-left .personalData .box .inputData {
+	width: 150px;
+}
+
+
+.wrapper-left .personalData .box .inputData .data {
+	width: 30%;
+	width: 100px;
+	margin-top: 3px;
+	height: 20px;
+	float: right;
+}
+
+.wrapper-left .personalData .editButton input {
+	height: 30px;
+	width: 100px;
+	border-radius: 10px;
+	font-size: 16px;
+	border: none;
+	margin-top: 10px;
+	background-image: linear-gradient(135deg, #70F570 10%, #49C628 100%);
+	color: #fff;
+}
+
+.wrapper-right {
+  background: #41ace8;
+  padding: 30px 25px;
+  border-radius: 40px;
+  float: left;
+  padding: 30px 25px;
+  text-align: center;
+  width: 600px;
+}
+
+.wrapper-right .profileData > summary {
+	padding: 0;
+	width: 130px;
+	height: 30px;
+    font-size: 16px;
+    border-radius: 40px;
+    display: inline-block;
+    color: #fff;
+    border: 0;
+    outline: 0;
+    text-align: center;
+}
+
+.wrapper-right .profileData .box {
+	width: 600px;
+	display: flex;
+}
+
+.wrapper-right .profileData .box .labelProfileData {
+	width: 150px;
+	float: left;
+	margin-left: 150px;
+}
+
+.wrapper-right .profileData .box .inputProfileData {
+	width: 150px;
+}
+
+
+.wrapper-left .profileData .box .inputProfileData .data {
+	width: 30%;
+	width: 100px;
+	margin-top: 3px;
+	height: 20px;
+	float: right;
+}
+
+
+.wrapper-right .profileData .editButton input {
+	height: 30px;
+	width: 100px;
+	border-radius: 10px;
+	font-size: 16px;
+	border: none;
+	margin-top: 10px;
+	background-image: linear-gradient(135deg, #70F570 10%, #49C628 100%);
+	color: #fff;
+}
