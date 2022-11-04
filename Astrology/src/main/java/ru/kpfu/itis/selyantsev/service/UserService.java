@@ -15,11 +15,13 @@ public interface UserService {
 
     Optional<UserDTO> findById(Long id);
 
-    UserDTO findByLogin(String login);
+    User findByLogin(String login);
+
+    void update(User entity, String loginName);
 
     boolean login(String loginName, String password);
 
     String search(String pageName);
 
-    Profile createNullProfile(String loginName);
+
 }
