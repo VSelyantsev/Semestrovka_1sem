@@ -29,7 +29,7 @@
                 </div>
             </div>
 
-            <h3>Don't have an account? <a href="/registration">Creat Your Account</a></h3>
+            <h3>Don't have an account? <a href="Astrology_war_exploded/registration">Creat Your Account</a></h3>
 
             <div class="submit">
                 <input type="Submit" name="submit" value="Login">

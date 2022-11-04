@@ -12,10 +12,8 @@
 <#macro content>
     <div class="wrapper">
         <div class="left">
-            <img src="images/profile/photoProfile.jpg"
-            alt="user" width="100">
+            <img class="img" src="${profile.profilePhotoUrl}"/>
             <h4>${user.firstName} ${user.lastName}</h4>
-            <!-- Role input(по умолчанию none), берем из формы в сервлете(edit profile)-->
              <p>
                  ${profile.profileRole}
                 <div class="inputForRole">

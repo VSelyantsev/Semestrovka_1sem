@@ -48,7 +48,7 @@
                 <img  class="eyeLogo" src="images/mainLogo/Logo.png">
             </picture>
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">Home</a>
+                <a class="navbar-brand" href="mainPage.ftl">Home</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbarSupportedContent"
                         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -62,9 +62,6 @@
                         <li class="nav-item">
                             <a class="nav-link active" href="/Astrology_war_exploded/planets">Planets</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="">Articles</a>
-                        </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link active dropdown-toggle" href="/profile" id="navbarDropdown" role="button"
                                data-bs-toggle="dropdown" aria-expanded="false">
@@ -72,7 +69,7 @@
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="/Astrology_war_exploded/profile">Profile</a></li>
-                                <li><a class="dropdown-item" href="/Astrology_war_exploded/articles">My articles</a></li>
+                                <li><a class="dropdown-item" href="/Astrology_war_exploded/editProfile">Edit Profile</a></li>
                                 <li><hr class="dropdown-divider"></li>
                                 <li><a class="dropdown-item" href="/Astrology_war_exploded/login">Logout</a></li>
                             </ul>
