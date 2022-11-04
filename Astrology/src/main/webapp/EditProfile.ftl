@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<#include "base.ftl">
 	<title>Edit Profile</title>
 	<link rel="stylesheet" type="text/css" href="styleForEditProfile.css">
 </head>
 <body>
-	
+
+<#macro content>
 	<div class="wrapper">
-		<form method="post" action="/editProfile">
+		<form method="post" action="profile.ftl">
 			<div class="wrapper-left">
 				<details class="personalData">
 					<summary>Edit Personal Data</summary>
@@ -16,7 +18,7 @@
 							<label for="firstName" class="fl">First Name: </label>
 						</div>
 						<div class="inputData">
-							<input class="data" type="text" name="firstName" placeholder="Edit First Name" autofocus="on" 
+							<input class="data" type="text" name="firstname" placeholder="Edit First Name" autofocus="on"
 							required minlength="4"
                        		pattern="^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$">
 						</div>
@@ -45,23 +47,23 @@
 
 					<div class="box">
 						<div class="labelData">
+							<label for="password" class="fl"> Password </label>
+						</div>
+						<div class="inputData">
+							<input type="Password" required name="password" placeholder="Enter Password" class="data"
+								   minlength="6"
+								   pattern="(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{6,}">
+						</div>
+					</div>
+
+					<div class="box">
+						<div class="labelData">
 							<label for="email" class="fl"> Email ID: </label>
 						</div>
 						<div class="inputData">
 							<input type="email" required name="email" placeholder="Enter Email" class="data"
                     		pattern="/\A[^@]+@([^@\.]+\.)+[^@\.]+\z/">
 						</div>	
-					</div>
-
-					<div class="box">
-						<div class="labelData">
-							<label for="password" class="fl"> Password </label>
-						</div>
-						<div class="inputData">
-                    		<input type="Password" required name="password" placeholder="Enter Password" class="data"
-                   			minlength="6"
-                       		pattern="(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{6,}">
-						</div>
 					</div>
 
 					<div class="box">
@@ -80,18 +82,16 @@
             		</div> 	
 				</details>
 			</div>
-		</form>
 
-		<form method="post" action="edtitProfile">
 			<div class="wrapper-right">
 				<details class="profileData">
-					<summary>Edit Profle data</summary>
+					<summary>Edit Profile data</summary>
 					<div class="box">
 						<div class="labelProfileData">
 							<label for="file">Upload photo</label>
 						</div>
 						<div class="inputProfileData">
-							<input class="data" type="file" name="file" value="select photo">
+							<input class="data" type="file" name="file" value="select photo" required>
 						</div>
 					</div>
 					<div class="box">
@@ -99,7 +99,7 @@
 							<label for="profileRole">Role:</label>
 						</div>
 						<div class="inputProfileData">
-							<input class="data" type="text" name="profileRole">
+							<input class="data" type="text" name="profileRole" required>
 						</div>
 					</div>
 					<div class="box">
@@ -107,7 +107,7 @@
 							<label for="profileHobby">Hobby:</label>
 						</div>
 						<div class="inputProfileData">
-							<input class="data" type="text" name="profileHobby">
+							<input class="data" type="text" name="profileHobby" required>
 						</div>
 					</div>
        				<div class="editButton">
@@ -117,6 +117,6 @@
        		</div>
 		</form>
 	</div>
-
+</#macro>
 </body>
 </html>
