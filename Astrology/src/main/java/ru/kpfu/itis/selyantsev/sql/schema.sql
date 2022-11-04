@@ -37,7 +37,7 @@ create table articles (
 
 create table profile (
     id serial primary key,
-    photo varchar(200),
+    photo varchar(200) default null,
     profile_role varchar(20),
     hobby varchar(50),
     account_login_name varchar(20) not null,
